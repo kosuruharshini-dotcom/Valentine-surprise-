@@ -1,0 +1,132 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bestie Valentine Surprise</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            color: #333;
+        }.card {
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        max-width: 420px;
+        width: 90%;
+    }
+
+    h1 {
+        color: #ff4b6e;
+    }
+
+    input {
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        width: 80%;
+        margin-top: 15px;
+        font-size: 16px;
+    }
+
+    button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 10px;
+        background: #ff4b6e;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    button:hover {
+        background: #e63c5d;
+    }
+
+    img {
+        width: 160px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 15px;
+        margin-top: 15px;
+        border: 4px solid #ff4b6e;
+    }
+
+    .hidden {
+        display: none;
+    }
+</style>
+
+</head>
+<body><!-- PAGE 1 -->
+<div class="card" id="page1">
+    <h1>Welcome 💖</h1>
+    <p>Enter your name to continue</p>
+    <input type="text" id="nameInput" placeholder="Enter your name">
+    <br>
+    <button onclick="goToPage2()">Next</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="card hidden" id="page2">
+    <h1>Valentine Request 💌</h1>
+    <p id="proposalText"></p>
+    <button onclick="sayYes()">Yes 💖</button>
+    <button onclick="sayNo()">No 😢</button>
+</div>
+
+<!-- YES PAGE -->
+<div class="card hidden" id="yesPage">
+    <h1>Yayyy 💕</h1>
+    <img src="friend.jpg" alt="Friend Photo">
+    <p>
+        You are not just my Valentine today...<br>
+        You are my forever best friend ❤️<br>
+        Thank you for being in my life.
+    </p>
+</div>
+
+<!-- NO PAGE -->
+<div class="card hidden" id="noPage">
+    <h1>😢 Disappointed</h1>
+    <p>
+        Ayyoo... disappointed 😭<br>
+        But still you are my best friend always ❤️
+    </p>
+</div>
+
+<script>
+    function goToPage2() {
+        let name = document.getElementById("nameInput").value;
+        if(name.trim() === "") {
+            alert("Please enter your name");
+            return;
+        }
+        document.getElementById("page1").classList.add("hidden");
+        document.getElementById("page2").classList.remove("hidden");
+        document.getElementById("proposalText").innerHTML =
+            name + ", will you be my Valentine Bestie? 💖";
+    }
+
+    function sayYes() {
+        document.getElementById("page2").classList.add("hidden");
+        document.getElementById("yesPage").classList.remove("hidden");
+    }
+
+    function sayNo() {
+        document.getElementById("page2").classList.add("hidden");
+        document.getElementById("noPage").classList.remove("hidden");
+    }
+</script>
+
+</body>
+</html>
